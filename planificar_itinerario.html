@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificar Itinerario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('fondo_itinerario.jpg') no-repeat center center/cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            overflow: auto;
+        }
+        .container {
+            width: 375px;
+            background: rgba(46, 58, 78, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .header {
+            background: #161d29;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .header img {
+            width: 50px;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+            background: rgba(46, 58, 78, 0.9);
+            margin: 10px 0;
+        }
+        .content h2 {
+            margin: 10px 0;
+            color: #ff7e5f;
+        }
+        .content .checkbox-group {
+            text-align: left;
+            margin: 10px 0;
+        }
+        .content .checkbox-group label {
+            display: block;
+            margin: 10px 0;
+        }
+        .content .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .content button {
+            background-color: #ff7e5f;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .content button:hover {
+            background-color: #e06554;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background: #161d29;
+        }
+        .footer img {
+            width: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="Valladolid Pueblo Mágico">
+        </div>
+        <div class="content">
+            <h2>Planifica tu Itinerario</h2>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="activities" value="Visita al Cenote Zací">
+                    Visita al Cenote Zací ($90 MXN)
+                </label>
+                <label>
+                    <input type="checkbox" name="activities" value="Explora las Ruinas de Ek Balam">
+                    Explora las Ruinas de Ek Balam (Gratis)
+                </label>
+                <label>
+                    <input type="checkbox" name="activities" value="Paseo en Bici por el Centro Histórico">
+                    Paseo en Bici por el Centro Histórico (Costo de alquiler de bici)
+                </label>
+                <label>
+                    <input type="checkbox" name="activities" value="Visita a Chichen Itzá">
+                    Visita a Chichen Itzá ($420 MXN)
+                </label>
+                <label>
+                    <input type="checkbox" name="activities" value="Espectáculo de Luz y Sonido en el Convento de San Bernardino">
+                    Espectáculo de Luz y Sonido en el Convento de San Bernardino ($60 MXN)
+                </label>
+                <label>
+                    <input type="checkbox" name="activities" value="Visita al Convento de San Bernardino">
+                    Visita al Convento de San Bernardino ($60 MXN)
+                </label>
+                <label>
+                    <input type="checkbox" name="activities" value="Festival del Gallo en Noviembre">
+                    Festival del Gallo en Noviembre (Gratis)
+                </label>
+                <label>
+                    <input type="checkbox" name="restaurants" value="El Atrio del Mayab">
+                    Restaurante: El Atrio del Mayab
+                </label>
+                <label>
+                    <input type="checkbox" name="restaurants" value="Las Ascuas">
+                    Restaurante: Las Ascuas
+                </label>
+                <label>
+                    <input type="checkbox" name="restaurants" value="Don Diablo Rooftop">
+                    Restaurante: Don Diablo Rooftop
+                </label>
+                <label>
+                    <input type="checkbox" name="restaurants" value="Yerba Buena del Sisal">
+                    Restaurante: Yerba Buena del Sisal
+                </label>
+                <label>
+                    <input type="checkbox" name="restaurants" value="Taberna de los Frailes">
+                    Restaurante: Taberna de los Frailes
+                </label>
+                <label>
+                    <input type="checkbox" name="interests" value="Catedral de San Gervasio">
+                    Catedral de San Gervasio
+                </label>
+                <label>
+                    <input type="checkbox" name="interests" value="Convento de San Bernardino de Siena">
+                    Convento de San Bernardino de Siena
+                </label>
+            </div>
+            <button onclick="saveItinerary()">Guardar Itinerario en PDF</button>
+        </div>
+        <div class="footer">
+            <a href="home.html"><img src="home.png" alt="Home"></a>
+            <a href="Inicio.html"><img src="explore.png" alt="Explore"></a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        const { jsPDF } = window.jspdf;
+
+        function saveItinerary() {
+            const activities = document.querySelectorAll('input[name="activities"]:checked');
+            const restaurants = document.querySelectorAll('input[name="restaurants"]:checked');
+            const interests = document.querySelectorAll('input[name="interests"]:checked');
+
+            let totalCost = 0;
+            const pdf = new jsPDF();
+
+            pdf.setFontSize(22);
+            pdf.text("Itinerario de Viaje - Valladolid", 20, 20);
+            pdf.setFontSize(16);
+
+            pdf.text("Actividades:", 20, 40);
+            activities.forEach((activity, index) => {
+                const cost = extractCost(activity.value);
+                totalCost += cost;
+                pdf.text(`${index + 1}. ${activity.value}`, 20, 50 + index * 10);
+            });
+
+            pdf.text("Restaurantes:", 20, 50 + activities.length * 10 + 10);
+            restaurants.forEach((restaurant, index) => {
+                pdf.text(`${index + 1}. ${restaurant.value}`, 20, 60 + activities.length * 10 + index * 10);
+            });
+
+            pdf.text("Lugares de Interés:", 20, 60 + (activities.length + restaurants.length) * 10 + 10);
+            interests.forEach((interest, index) => {
+                pdf.text(`${index + 1}. ${interest.value}`, 20, 70 + (activities.length + restaurants.length) * 10 + index * 10);
+            });
+
+            pdf.setFontSize(18);
+            pdf.setTextColor(255, 0, 0);
+            pdf.text(`Costo Total Aproximado: $${totalCost} MXN`, 20, 80 + (activities.length + restaurants.length + interests.length) * 10);
+
+            pdf.save("itinerario_valladolid.pdf");
+        }
+
+        function extractCost(text) {
+            const costMatch = text.match(/\$(\d+) MXN/);
+            return costMatch ? parseInt(costMatch[1]) : 0;
+        }
+    </script>
+</body>
+</html>

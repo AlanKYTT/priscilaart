@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atracciones de Valladolid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('fondo_atracciones.jpg') no-repeat center center/cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            overflow: auto;
+        }
+        .container {
+            width: 375px;
+            background: rgba(46, 58, 78, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .header {
+            background: #161d29;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .header img {
+            width: 50px;
+        }
+        .attraction {
+            padding: 20px;
+            text-align: center;
+            background: rgba(46, 58, 78, 0.9);
+        }
+        .attraction img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .attraction h2 {
+            margin: 10px 0;
+            color: #ff7e5f;
+        }
+        .attraction p {
+            color: #d1d5db;
+        }
+        .attraction .price {
+            color: #ff7e5f;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background: #161d29;
+        }
+        .footer img {
+            width: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="Valladolid Pueblo Mágico">
+        </div>
+        <div class="attraction">
+            <img src="cenote.jpg" alt="Cenote">
+            <h2>Actividad: Cenote</h2>
+            <p>
+                El Cenote Zací está ubicado en el centro de Valladolid, Yucatán. Este cenote es una impresionante cueva con aguas cristalinas donde puedes nadar y disfrutar de la naturaleza. 
+                La entrada es bastante económica y es un lugar perfecto para refrescarse en un día caluroso. Recomendado para una visita de medio día.
+            </p>
+            <div class="price">$90 MXN</div>
+            <p>1 DÍA | 3 HRS</p>
+        </div>
+        <div class="attraction">
+            <img src="ruinas.jpg" alt="Ruinas">
+            <h2>Actividad: Ruinas</h2>
+            <p>
+                Las ruinas de Ek Balam son un sitio arqueológico maya situado cerca de Valladolid. Este sitio es menos conocido que Chichen Itzá, lo que permite una experiencia más tranquila 
+                y cercana con la historia. Puedes explorar las estructuras antiguas y subir a las pirámides para obtener vistas panorámicas.
+            </p>
+            <div class="price">Gratis</div>
+            <p>TODO EL DÍA</p>
+        </div>
+        <div class="attraction">
+            <img src="chichen_itza.jpg" alt="Chichen Itzá">
+            <h2>Chichen Itzá</h2>
+            <p>
+                Chichen Itzá es una de las nuevas siete maravillas del mundo y un sitio arqueológico maya de renombre mundial. Aquí puedes admirar la majestuosa Pirámide de Kukulkán, 
+                el Templo de los Guerreros y el Observatorio. Es un destino imperdible que te llevará de regreso en el tiempo para descubrir la grandeza de la civilización maya.
+            </p>
+            <div class="price">$420 MXN</div>
+            <p>1 DÍA | 6 HRS</p>
+        </div>
+        <div class="attraction">
+            <img src="convento_san_bernardino.jpg" alt="Convento de San Bernardino">
+            <h2>Convento de San Bernardino</h2>
+            <p>
+                El Convento de San Bernardino de Siena es un impresionante convento del siglo XVI que ofrece una mirada fascinante a la historia colonial de Valladolid. 
+                Además de recorrer el convento y sus jardines, por la noche puedes disfrutar de un espectáculo de luces y sonidos que cuenta la historia del lugar.
+            </p>
+            <div class="price">$60 MXN</div>
+            <p>1 DÍA | 2 HRS</p>
+        </div>
+        <div class="footer">
+            <a href="home.html"><img src="home.png" alt="Home"></a>
+            <a href="Inicio.html"><img src="explore.png" alt="Explore"></a>
+        </div>
+    </div>
+</body>
+</html>
